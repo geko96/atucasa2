@@ -12,7 +12,7 @@ let arraye = [
 let arre2 = {"name":"jabon","precio":500,"description":"jabon para lavarropas","initial":3,"stock":10}
 
 
-export default function ItemListContainer () {
+export default function ItemList () {
     return (
         <div className="cuadricula">
             {arraye.map(product => (
