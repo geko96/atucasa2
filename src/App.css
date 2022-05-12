@@ -36,3 +36,41 @@
     transform: rotate(360deg);
   }
 }
+
+.botonera {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  text-align: center;
+  justify-content: center;
+  justify-items: baseline;
+}
+
+.botonera button {
+  margin: 10px;
+}
+
+.text-center {
+  font-size: 30px;
+}
+
+.centrado {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+}
+
+.margin10 {
+  margin: 10px;
+}
+
+.cuadricula {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  justify-items: center;
+}
