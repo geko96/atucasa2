@@ -2,6 +2,7 @@ import React from "react"
 import { Card } from "react-bootstrap"
 import { Button } from "react-bootstrap"
 import Swal from 'sweetalert2'
+import './items.css'
 
 
 export default function ItemCount({productos}) {
@@ -32,7 +33,7 @@ export default function ItemCount({productos}) {
     try {
     return (
     
-        <Card key={productos.name} className="margin10" style={{ width: '18rem' }}>
+        <Card key={productos.name} className="margin10 rowItem" style={{ width: 'auto'}}>
         <Card.Img variant="top" src="logo192.png" />
             <Card.Body className="centrado">
                 <Card.Title>{productos.name}</Card.Title>

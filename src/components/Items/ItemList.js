@@ -1,23 +1,35 @@
 import ItemCount from "./ItemCount";
-
-
-let arraye = [
-    {"name":"jabon","precio":500,"description":"jabon para lavarropas","initial":0,"stock":10},
-    {"name":"lavandina","precio":100,"description":"lavandina","initial":3,"stock":100},
-    {"name":"perfume","precio":2500,"description":"Perfue para ropa","initial":1,"stock":7},
-    {"name":"detergente","precio":150,"description":"Detergente amarillo","initial":0,"stock":20},
-    {"name":"jabon solido","precio":5500,"description":"jabon duro","initial":0,"stock":30},
-]
-
-let arre2 = {"name":"jabon","precio":500,"description":"jabon para lavarropas","initial":3,"stock":10}
+import React from "react";
+import { useEffect, useState } from "react";
 
 
 export default function ItemList () {
-    return (
-        <div className="cuadricula">
-            {arraye.map(product => (
-                <ItemCount productos={product}/>
+
+    const [isLoading, setIsLoading] = useState(true);
+    const [prodArr, setProdarr] = useState(null)
+    useEffect(() => {
+      fetch("http://104.248.199.109/atucasa")
+        .then((response) => response.json())
+        .then((product) => {
+            console.log(product)
+            setProdarr(product)
+            setIsLoading(false)
+        });
+    }, []);
+    if (isLoading) { // ⬅️ si está cargando, mostramos un texto que lo indique
+        return (
+          <div className="App">
+            <h1>Cargando...</h1>
+          </div>
+        );
+      }
+      return (
+        <div className="row">
+          {prodArr.map(product => (
+                <ItemCount key={product.name} productos={product}/>
             ))}
         </div>
-    )
-}
+      );
+    }
+
+    
