@@ -1,0 +1,64 @@
+.contenedor {
+    display: grid;
+    grid-template-columns: 60% 1fr;
+    grid-template-rows: repeat(2, auto) 100px;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    grid-template-areas: 
+    'fotos menu'
+    'description description'
+    'description description';
+    background-color: gray;
+    padding: 20px;
+}
+
+.Fotos {
+    grid-area: 'fotos';
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.menu {
+    grid-area: 'menu';
+}
+
+.Description {
+    grid-area: 'description';
+    padding: 30px;
+    background-color: orange;
+    width: 100%;
+    height: min-content;
+}
+
+.DefaultPicDisplayed {
+    width: 70%;
+    border-radius: 5px;
+    border: 1px solid black;
+    
+    
+}
+
+.OtrosProductos {
+    padding: 10px;
+    text-align: center;
+}
+
+.litleImg {
+    width: 15%;
+    margin: 10px;
+}
+
+#carruselImg {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#DefaultPic {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    justify-items: center;
+}
