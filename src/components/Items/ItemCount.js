@@ -3,6 +3,7 @@ import { Card } from "react-bootstrap"
 import { Button } from "react-bootstrap"
 import Swal from 'sweetalert2'
 import './items.css'
+import { NavLink } from "react-router-dom"
 
 
 export default function ItemCount({productos}) {
@@ -33,8 +34,8 @@ export default function ItemCount({productos}) {
     try {
     return (
     
-        <Card key={productos.name} className="margin10 rowItem" style={{ width: 'auto'}}>
-        <Card.Img variant="top" src="logo192.png" />
+        <Card key={productos.name} className="margin10 rowItem" style={{ width: '250px'}}>
+            <NavLink exact to={'/item/'+productos.name}><p><img className="cardImg" src={productos.img[0]}/></p></NavLink>
             <Card.Body className="centrado">
                 <Card.Title>{productos.name}</Card.Title>
                 <Card.Subtitle>${productos.precio}</Card.Subtitle>

@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavDropdown } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import { FormControl } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
 
 
@@ -14,7 +15,7 @@ export default function NavBar ({carrito}) {
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
   <Container fluid>
-    <Navbar.Brand href="#">A Tu Casa</Navbar.Brand>
+    <Navbar.Brand><NavLink exact to="/">A Tu Casa</NavLink></Navbar.Brand>
     <Navbar.Toggle aria-controls="navbarScroll" />
     <Navbar.Collapse id="navbarScroll">
       <Nav
