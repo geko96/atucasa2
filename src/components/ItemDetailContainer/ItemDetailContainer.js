@@ -2,13 +2,14 @@ import ItemDetail from "./ItemDetail";
 import React from "react";
 import { useEffect, useState } from "react";
 import './items.css'
-
-
+import { useParams } from 'react-router-dom';
 
 export default function ItemDetailContainer () {
-
     const [isLoading, setIsLoading] = useState(true);
     const [prodArr, setProdarr] = useState(null)
+    let parametros = useParams().id
+    console.log(parametros)
+    
     useEffect(() => {
       fetch("http://104.248.199.109/atucasa")
         .then((response) => response.json())
@@ -25,8 +26,10 @@ export default function ItemDetailContainer () {
           </div>
         );
       }
+
+      
       return (
-        <ItemDetail producto={prodArr[0]} className="DetailBody"/>
+        <ItemDetail producto={prodArr[parametros]} className="DetailBody"/>
       );
     }
 

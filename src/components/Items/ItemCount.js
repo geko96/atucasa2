@@ -35,7 +35,7 @@ export default function ItemCount({productos}) {
     return (
     
         <Card key={productos.name} className="margin10 rowItem" style={{ width: '250px'}}>
-            <NavLink exact to={'/item/'+productos.name}><p><img className="cardImg" src={productos.img[0]}/></p></NavLink>
+            <NavLink exact to={'/item/'+productos.id}><p><img className="cardImg" src={productos.img[0]}/></p></NavLink>
             <Card.Body className="centrado">
                 <Card.Title>{productos.name}</Card.Title>
                 <Card.Subtitle>${productos.precio}</Card.Subtitle>
