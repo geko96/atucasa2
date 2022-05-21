@@ -8,7 +8,7 @@ export default function ItemList () {
     const [isLoading, setIsLoading] = useState(true);
     const [prodArr, setProdarr] = useState(null)
     useEffect(() => {
-      fetch("http://104.248.199.109/atucasa")
+      fetch("http://api.geko.com.ar/atucasa")
         .then((response) => response.json())
         .then((product) => {
             console.log(product)

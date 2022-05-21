@@ -11,7 +11,7 @@ export default function ItemDetailContainer () {
     console.log(parametros)
     
     useEffect(() => {
-      fetch("http://104.248.199.109/atucasa")
+      fetch("http://api.geko.com.ar/atucasa")
         .then((response) => response.json())
         .then((product) => {
             console.log(product)
