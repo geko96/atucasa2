@@ -39,9 +39,12 @@ export default function Counter (elementos) {
 
   return (
     <>
+    <div className="botonera">
     <Button variant="primary" id="-" onClick={del}>-</Button>
     <div className="text-center">{count}</div>
     <Button variant="primary" id="+" onClick={add}>+</Button>
+    </div>
+    <Button variant="primary" id="add" >Agregar al Carrito</Button>
 
     
 

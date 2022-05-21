@@ -20,10 +20,10 @@ export default function ItemCount({productos}) {
                 <Card.Subtitle>${productos.precio}</Card.Subtitle>
 
                 <Card.Text>{productos.description}</Card.Text>
-                <div className="botonera">
+                <div>
                 <Counter elementos={{"initial":productos.initial,"stock":productos.stock}}/>
                 </div>
-                <Button variant="primary">Agregar al carrito</Button>
+                
 
             </Card.Body>
         </Card>
