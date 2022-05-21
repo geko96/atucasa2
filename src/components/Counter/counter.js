@@ -2,13 +2,14 @@ import React from "react"
 import Swal from "sweetalert2"
 import { Button } from "react-bootstrap"
 
+import { useState, useEffect } from "react";
+import ReactDOM from "react-dom/client";
+
 
 
 export default function Counter (elementos) {
-    let data = (elementos.elementos)
 
-    const [count, setCount] = React.useState(data.initial)
-
+    let data = elementos.elementos
 
     let add = () => {
         if (count >= data.stock) {
@@ -32,20 +33,27 @@ export default function Counter (elementos) {
         }
     }
 
+    const [count, setCount] = useState(0);
+
+  
+
+  return (
+    <>
+    <Button variant="primary" id="-" onClick={del}>-</Button>
+    <div className="text-center">{count}</div>
+    <Button variant="primary" id="+" onClick={add}>+</Button>
+
     
 
-
-    return (
-        <>
-        <Button variant="primary" id="-" onClick={del()}>-</Button>
-        <div className="text-center">{count}</div>
-        <Button variant="primary" id="+" >+</Button>
-
-        
-
-        </>
-    )
+    </>
+)
 }
+
+
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<coun />);
+
 
 
 
