@@ -63,7 +63,7 @@ export default function Counter (elementos) {
         )
         }else {
             return (
-                <Link to="/Cart">
+                <Link to="/Cart" className="botonera">
                 <Button variant="primary" >Comprar</Button>
                 </Link>
             )
@@ -74,15 +74,13 @@ export default function Counter (elementos) {
 
   return (
     <div className="center">
-    <div className="botonera">
-    <Button variant="primary" id="-" onClick={del}>-</Button>
-    <div className="text-center">{count}</div>
-    <Button variant="primary" id="+" onClick={add}>+</Button>
-    </div>
-    <ShopButton/>
-    
-
-    
+        <div className="botonera">
+            <Button variant="primary" id="-" onClick={del}>-</Button>
+            <div className="text-center">{count}</div>
+            <Button variant="primary" id="+" onClick={add}>+</Button>
+        
+        </div>
+        <ShopButton/>
 
     </div>
 )

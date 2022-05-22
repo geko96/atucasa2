@@ -46,7 +46,7 @@ export default function ItemDetail({producto}) {
 
                     Medios de pago
                     Envio
-                    <Counter elementos={{"initial":producto.initial,"stock":producto.stock}}/>
+                    <Counter className="center" elementos={{"initial":producto.initial,"stock":producto.stock}}/>
                 </div>
                 <div className="Description">
                     <h1>{producto.name}</h1>
