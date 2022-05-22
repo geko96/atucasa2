@@ -59,7 +59,16 @@ export default function Counter (elementos) {
     function ShopButton () {
         if(action == 'comprar'){
         return (
+            <>
+            <div className="botonera">
+            <Button variant="primary" id="-" onClick={del}>-</Button>
+            <div className="text-center">{count}</div>
+            <Button variant="primary" id="+" onClick={add}>+</Button>
+        
+            </div>
             <Button variant="primary" onClick={CartAdd}>Agregar al Carrito</Button>
+
+            </>
         )
         }else {
             return (
@@ -74,12 +83,7 @@ export default function Counter (elementos) {
 
   return (
     <div className="center">
-        <div className="botonera">
-            <Button variant="primary" id="-" onClick={del}>-</Button>
-            <div className="text-center">{count}</div>
-            <Button variant="primary" id="+" onClick={add}>+</Button>
         
-        </div>
         <ShopButton/>
 
     </div>
