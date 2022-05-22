@@ -4,6 +4,8 @@
     flex-wrap: wrap;
     justify-content: center;
     justify-items: center;
+    margin: 20px;
+    width: fit-content;
 }
 
 .rowItem {
