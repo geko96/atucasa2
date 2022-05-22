@@ -13,16 +13,16 @@ export default function ItemCount({productos}) {
     try {
     return (
     
-        <Card key={productos.name} className="margin10 rowItem" style={{ width: '250px'}}>
+        <Card key={productos.name} className="margin10" style={{ width: '250px'}}>
             <NavLink exact to={'/item/'+productos.id}><p><img className="cardImg" src={productos.img[0]}/></p></NavLink>
-            <Card.Body className="centrado">
+            <Card.Body className="row">
                 <Card.Title>{productos.name}</Card.Title>
                 <Card.Subtitle>${productos.precio}</Card.Subtitle>
 
                 <Card.Text>{productos.description}</Card.Text>
-                <div>
+                
                 <Counter elementos={{"initial":productos.initial,"stock":productos.stock,"id":productos.id}}/>
-                </div>
+                
                 
 
             </Card.Body>

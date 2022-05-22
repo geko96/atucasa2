@@ -62,16 +62,19 @@
 }
 
 .centrado {
+  width: fit-content;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
   justify-items: center;
   text-align: center;
+
 }
 
 .margin10 {
   margin: 10px;
+  
 }
 
 .cuadricula {
