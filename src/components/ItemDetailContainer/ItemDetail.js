@@ -2,6 +2,7 @@ import React from "react"
 import Swal from 'sweetalert2'
 import './items.css'
 import ItemList from "../Items/ItemList"
+import Counter from "../Counter/counter"
 
 
 export default function ItemDetail({producto}) {
@@ -42,8 +43,10 @@ export default function ItemDetail({producto}) {
                 <div className="menu">
                     <h1>{producto.name}</h1>
                     <h3>${producto.precio}</h3>
+
                     Medios de pago
                     Envio
+                    <Counter elementos={{"initial":producto.initial,"stock":producto.stock}}/>
                 </div>
                 <div className="Description">
                     <h1>{producto.name}</h1>

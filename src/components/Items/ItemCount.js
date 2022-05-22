@@ -21,7 +21,7 @@ export default function ItemCount({productos}) {
 
                 <Card.Text>{productos.description}</Card.Text>
                 <div>
-                <Counter elementos={{"initial":productos.initial,"stock":productos.stock}}/>
+                <Counter elementos={{"initial":productos.initial,"stock":productos.stock,"id":productos.id}}/>
                 </div>
                 
 
