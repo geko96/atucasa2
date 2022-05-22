@@ -1,7 +1,7 @@
 import React from "react"
 import Swal from "sweetalert2"
 import { Button } from "react-bootstrap"
-import { Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
@@ -41,15 +41,34 @@ export default function Counter (elementos) {
     const [count, setCount] = useState(0);
     const [action, setAction] = useState('comprar');
 
-    const AddToCart = () => {
-        <Button variant="primary">Agregar al Carrito</Button>
+    const CartAdd = () => {
+        setAction('readyForPurchase')
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Agregado al carrito',
+            showConfirmButton: false,
+            timer: 1500
+          })
+
     }
 
-    const GoToCart = () => {
-        <Button variant="primary">Comprar</Button>
-    }
+    
+    
 
-    const ShopButton = action == 'comprar' ? AddToCart : GoToCart
+    function ShopButton () {
+        if(action == 'comprar'){
+        return (
+            <Button variant="primary" onClick={CartAdd}>Agregar al Carrito</Button>
+        )
+        }else {
+            return (
+                <Link to="/Cart">
+                <Button variant="primary" >Comprar</Button>
+                </Link>
+            )
+        }
+    }
     
 
 
@@ -60,7 +79,7 @@ export default function Counter (elementos) {
     <div className="text-center">{count}</div>
     <Button variant="primary" id="+" onClick={add}>+</Button>
     </div>
-    <AddToCart/>
+    <ShopButton/>
     
 
     
