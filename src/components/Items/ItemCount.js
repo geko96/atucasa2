@@ -5,6 +5,7 @@ import Swal from 'sweetalert2'
 import './items.css'
 import { NavLink } from "react-router-dom"
 import Counter from "../Counter/counter"
+import { useContext } from "react"
 
 export default function ItemCount({productos}) {
     
@@ -21,7 +22,7 @@ export default function ItemCount({productos}) {
 
                 <Card.Text>{productos.description}</Card.Text>
                 
-                <Counter elementos={{"initial":productos.initial,"stock":productos.stock,"id":productos.id}}/>
+                <Counter elementos={{"initial":productos.initial,"stock":productos.stock,"id":productos.id,"producto":productos}}/>
                 
                 
 

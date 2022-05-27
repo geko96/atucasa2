@@ -5,10 +5,13 @@ import { Link } from "react-router-dom";
 
 import { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
+import { useContext } from "react";
+import { contexto } from "../../App";
 
 
 
 export default function Counter (elementos) {
+    const miContexto = useContext(contexto)
 
     let data = elementos.elementos
 
@@ -49,7 +52,11 @@ export default function Counter (elementos) {
             title: 'Agregado al carrito',
             showConfirmButton: false,
             timer: 1500
-          })
+        })
+
+        miContexto.cart.push(elementos.producto)
+
+        console.log('algo : '+ JSON.stringify(miContexto))
 
     }
 
@@ -73,7 +80,7 @@ export default function Counter (elementos) {
         }else {
             return (
                 <Link to="/Cart" className="botonera">
-                <Button variant="primary" >Comprar</Button>
+                <Button variant="primary">Comprar</Button>
                 </Link>
             )
         }
