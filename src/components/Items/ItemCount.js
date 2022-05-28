@@ -6,6 +6,7 @@ import './items.css'
 import { NavLink } from "react-router-dom"
 import Counter from "../Counter/counter"
 import { useContext } from "react"
+import { contexto } from "../../App"
 
 export default function ItemCount({productos}) {
     
@@ -22,7 +23,7 @@ export default function ItemCount({productos}) {
 
                 <Card.Text>{productos.description}</Card.Text>
                 
-                <Counter elementos={{"initial":productos.initial,"stock":productos.stock,"id":productos.id,"producto":productos}}/>
+                <Counter elementos={{"initial":productos.initial,"stock":productos.stock,"id":productos.id,"FullData":productos}}/>
                 
                 
 

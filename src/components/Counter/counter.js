@@ -11,6 +11,7 @@ import { contexto } from "../../App";
 
 
 export default function Counter (elementos) {
+    
     const miContexto = useContext(contexto)
 
     let data = elementos.elementos
@@ -56,7 +57,30 @@ export default function Counter (elementos) {
 
         miContexto.cart.push(elementos.producto)
 
-        console.log('algo : '+ JSON.stringify(miContexto))
+        let ItemForCart = {
+            "nombre":data.FullData.name,
+            "precio":data.FullData.precio,
+            "Cantidad":count,
+            "FullData":data.FullData
+        }
+        if (miContexto.cart == []) {
+            miContexto.cart = [ItemForCart]
+            console.log('primer item'+ miContexto.cart)
+        }else {
+            miContexto.cart.push(ItemForCart)
+            if (miContexto.cart[0] == null) {
+                miContexto.cart.splice(0,1)
+            }
+            if (miContexto.cart[0] == undefined) {
+                miContexto.cart.splice(0,1)
+            }
+            console.log('Array de items'+ JSON.stringify(miContexto.cart))
+        }
+        
+
+        if (miContexto.cart[0] == null) {
+            miContexto.cart.splice(0,1)
+        }
 
     }
 

@@ -7,11 +7,14 @@ import { NavDropdown } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import { FormControl } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import React, { useContext } from "react";
+import { contexto } from "../../App";
 
 
 
 
-export default function NavBar ({carrito}) {
+export default function NavBar () {
+  const [count, setCount] = React.useState(useContext(contexto).cart.length)
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
   <Container fluid>
@@ -24,7 +27,7 @@ export default function NavBar ({carrito}) {
         navbarScroll
       >
         <Nav.Link href="#action1">Home</Nav.Link>
-        <Nav.Link href="#action2">Carrito: {carrito}</Nav.Link>
+        <Nav.Link href="#action2">Carrito: {count}</Nav.Link>
         <Nav.Link href="#action2">Ayuda</Nav.Link>
         <Nav.Link href="#action2">Contacto</Nav.Link>
         
