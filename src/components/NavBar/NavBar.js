@@ -26,10 +26,10 @@ export default function NavBar () {
         style={{ maxHeight: '100px' }}
         navbarScroll
       >
-        <Nav.Link href="#action1">Home</Nav.Link>
-        <Nav.Link href="#action2">Carrito: {count}</Nav.Link>
-        <Nav.Link href="#action2">Ayuda</Nav.Link>
-        <Nav.Link href="#action2">Contacto</Nav.Link>
+        <Nav.Link><NavLink exact to="/">Home</NavLink></Nav.Link>
+        <Nav.Link ><NavLink exact to="/cart">Carrito: {count}</NavLink></Nav.Link>
+        <Nav.Link><NavLink exact to="/ayuda">Ayuda</NavLink></Nav.Link>
+        <Nav.Link><NavLink exact to="/contacto">Contacto</NavLink></Nav.Link>
         
       </Nav>
       <Form className="d-flex">

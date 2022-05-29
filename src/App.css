@@ -88,3 +88,22 @@
 .minwidth {
   width: fit-content;
 }
+
+
+a:link, a:visited,  a:hover, a:active
+{
+    color: white;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+
+
+.TablaCart {
+  width: 90%;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+
+  
+}
+

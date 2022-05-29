@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import { useContext } from "react";
 import { contexto } from "../../App";
+import { StorageId } from "../../App";
 
 
 
@@ -55,7 +56,7 @@ export default function Counter (elementos) {
             timer: 1500
         })
 
-        miContexto.cart.push(elementos.producto)
+        
 
         let ItemForCart = {
             "nombre":data.FullData.name,
@@ -63,24 +64,23 @@ export default function Counter (elementos) {
             "Cantidad":count,
             "FullData":data.FullData
         }
-        if (miContexto.cart == []) {
-            miContexto.cart = [ItemForCart]
-            console.log('primer item'+ miContexto.cart)
-        }else {
-            miContexto.cart.push(ItemForCart)
-            if (miContexto.cart[0] == null) {
-                miContexto.cart.splice(0,1)
-            }
-            if (miContexto.cart[0] == undefined) {
-                miContexto.cart.splice(0,1)
-            }
-            console.log('Array de items'+ JSON.stringify(miContexto.cart))
-        }
+        
         
 
+        
+
+
+
+        miContexto.cart.push(ItemForCart)
         if (miContexto.cart[0] == null) {
             miContexto.cart.splice(0,1)
         }
+        
+        console.log('Array de items'+ JSON.stringify(miContexto.cart))
+        localStorage.setItem(StorageId,JSON.stringify(miContexto))
+        
+
+        
 
     }
 
