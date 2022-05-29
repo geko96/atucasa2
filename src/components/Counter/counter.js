@@ -45,6 +45,18 @@ export default function Counter (elementos) {
     
     const [count, setCount] = useState(0);
     const [action, setAction] = useState('comprar');
+    const [inCart, setInCart] = useState(0)
+
+
+    function onCart (item,array) {
+        for (let i = 0; i < array.length; i++) {
+            if (array[i].nombre === item.nombre) {
+                setInCart(1)
+                console.log('existencia encontrada, Sumando cantidades preexistentes')
+            }
+            
+        }
+    }
 
     const CartAdd = () => {
         setAction('readyForPurchase')
@@ -65,13 +77,30 @@ export default function Counter (elementos) {
             "FullData":data.FullData
         }
         
+        function check () {
+            for (let i = 0; i < miContexto.cart.length; i++) {
+            
+                if (miContexto.cart[i].nombre === ItemForCart.nombre) {
+                    console.log('Existencia encontrada en el index '+ i)
+                    setInCart(1)
+                    miContexto.cart[i].Cantidad = miContexto.cart[i].Cantidad + ItemForCart.Cantidad
+                    return true
+                }
+                
+            }
+        }
+
+        if (check()) {
+            console.log('Producto con existencia agregado')
+        }else {
+            miContexto.cart.push(ItemForCart)
+        }
         
 
         
 
 
 
-        miContexto.cart.push(ItemForCart)
         if (miContexto.cart[0] == null) {
             miContexto.cart.splice(0,1)
         }
