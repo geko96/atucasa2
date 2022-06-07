@@ -3,12 +3,10 @@ import Swal from "sweetalert2"
 import { Button } from "react-bootstrap"
 import { Link } from "react-router-dom";
 
-import { useState, useEffect } from "react";
-import ReactDOM from "react-dom/client";
+import { useState} from "react";
 import { useContext } from "react";
 import { contexto } from "../../App";
 import { StorageId } from "../../App";
-
 
 
 export default function Counter (elementos) {
@@ -45,18 +43,9 @@ export default function Counter (elementos) {
     
     const [count, setCount] = useState(0);
     const [action, setAction] = useState('comprar');
-    const [inCart, setInCart] = useState(0)
 
 
-    function onCart (item,array) {
-        for (let i = 0; i < array.length; i++) {
-            if (array[i].nombre === item.nombre) {
-                setInCart(1)
-                console.log('existencia encontrada, Sumando cantidades preexistentes')
-            }
-            
-        }
-    }
+    
 
     const CartAdd = () => {
         setAction('readyForPurchase')
@@ -82,7 +71,6 @@ export default function Counter (elementos) {
             
                 if (miContexto.cart[i].nombre === ItemForCart.nombre) {
                     console.log('Existencia encontrada en el index '+ i)
-                    setInCart(1)
                     miContexto.cart[i].Cantidad = miContexto.cart[i].Cantidad + ItemForCart.Cantidad
                     return true
                 }
@@ -107,6 +95,7 @@ export default function Counter (elementos) {
         
         console.log('Array de items'+ JSON.stringify(miContexto.cart))
         localStorage.setItem(StorageId,JSON.stringify(miContexto))
+        
         
 
         
@@ -152,8 +141,7 @@ export default function Counter (elementos) {
 
 
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<coun />);
+
 
 
 

@@ -1,6 +1,7 @@
 import ItemCount from "./ItemCount";
 import React from "react";
 import { useEffect, useState } from "react";
+import { Spinner } from "react-bootstrap";
 
 
 export default function ItemList () {
@@ -19,7 +20,7 @@ export default function ItemList () {
     if (isLoading) { // ⬅️ si está cargando, mostramos un texto que lo indique
         return (
           <div className="App">
-            <h1>Cargando...</h1>
+            <h1 className="absoluteCenter"><Spinner animation="grow" variant="warning"/></h1>
           </div>
         );
       }

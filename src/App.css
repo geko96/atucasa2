@@ -107,3 +107,24 @@ a:link, a:visited,  a:hover, a:active
   
 }
 
+.absoluteCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  
+}
+
+.CART {
+  text-align: center;
+}
+
+.left {
+  float: right;
+  margin-right: 10%;
+}
+
+.emptyCart {
+  text-align: center;
+  margin-top: 100px
+  
+}

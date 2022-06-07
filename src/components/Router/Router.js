@@ -9,7 +9,7 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom'
 export default function Router() {
     return (
       <BrowserRouter>
-        <NavBar/>
+        <NavBar id="navbar"/>
         <Routes>
             <Route exact path='/' element={ <ItemListContainer/> } />
             <Route exact path='/category/:id' element={<ItemListContainer/>}/>

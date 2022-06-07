@@ -1,16 +1,53 @@
 import { useContext } from "react"
 import { contexto } from "../../App"
 import ItemCount from "../Items/ItemCount"
-import { Button } from "react-bootstrap"
+import { Button, Table } from "react-bootstrap"
 import './cart.css'
 import { StorageId } from "../../App"
+import React from "react"
+import { useEffect , useState } from "react"
+import { Link } from "react-router-dom"
 
 
 
 export default function Cart () {
+  let temp = 0 
+
     let contexti = useContext(contexto)
-    let cart = useContext(contexto).cart
+    let cart = contexti.cart
     console.log(cart)
+    const [count, setCount] = React.useState(0)
+    const cartContext = useContext(contexto).cart
+    const [amount, setAmount] = React.useState(0)
+
+    useEffect(() => {
+
+      for (let i = 0; i < cartContext.length; i++) {
+        temp = temp+cartContext[i].Cantidad
+        setCount(temp)
+        
+        
+      }
+  
+      
+  
+      
+    },[cartContext.lengt, count])
+
+    useEffect(() => {
+      //Precio Total Carrito
+      let total = 0
+      for (let i = 0; i < cartContext.length; i++) {
+        console.log('Cantidad :' + cartContext[i].Cantidad + ' precio: ' + cartContext[i].precio)
+        total = total + (cartContext[i].Cantidad*cartContext[i].precio)
+        setAmount(total)
+        
+      }
+  
+      
+  
+      
+    },[])
 
     function SaveData () {
       
@@ -29,9 +66,22 @@ export default function Cart () {
       return
     }
 
+    if (count === 0 ) {
+      return (
+        <div className="emptyCart">
+            <h2>No hay Productos en el carrito</h2>
+            <Link to="/" className="botonera">
+                <Button variant="primary">Ir a comprar</Button>
+                </Link>
+
+
+          
+        </div>
+      )
+    }
 
     return (
-        <div>
+        <div className="CART">
           <table className="TablaCart">
           <thead>
               <tr>
@@ -58,6 +108,14 @@ export default function Cart () {
               ))}
           </tbody>
           </table>
+
+          <table className="TablaCart">
+            <tr><td>Items</td><td>{count}</td></tr>
+            <tr><td>Total</td><td>${amount}</td></tr>
+            
+            
+          </table>
+          <Button className="left">Comprar</Button>
 
 
           

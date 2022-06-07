@@ -9,13 +9,42 @@ import { FormControl } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import React, { useContext } from "react";
 import { contexto } from "../../App";
+import { useEffect } from "react";
+import { useState } from "react";
 
 
 
 
 export default function NavBar () {
-  const [count, setCount] = React.useState(useContext(contexto).cart.length)
-    return (
+  let temp = 0 
+
+  
+  
+  const [count, setCount] = React.useState(0)
+  const cartContext = useContext(contexto).cart
+
+  
+
+
+  useEffect(() => {
+
+    for (let i = 0; i < cartContext.length; i++) {
+      temp = temp+cartContext[i].Cantidad
+      setCount(temp)
+      
+    }
+
+    
+
+    
+  },[cartContext.lengt, count])
+
+  
+
+  
+
+
+  return (
         <Navbar bg="dark" variant="dark" expand="lg">
   <Container fluid>
     <Navbar.Brand><NavLink exact to="/">A Tu Casa</NavLink></Navbar.Brand>
