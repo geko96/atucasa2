@@ -2,6 +2,7 @@ import ItemCount from "./ItemCount";
 import React from "react";
 import { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
+import { getFirestore, getDoc, doc, getDocs, collection } from 'firebase/firestore'
 
 
 export default function ItemList () {
@@ -9,13 +10,14 @@ export default function ItemList () {
     const [isLoading, setIsLoading] = useState(true);
     const [prodArr, setProdarr] = useState(null)
     useEffect(() => {
-      fetch("http://api.geko.com.ar/atucasa")
-        .then((response) => response.json())
-        .then((product) => {
-            console.log(product)
-            setProdarr(product)
-            setIsLoading(false)
-        });
+      const db = getFirestore()
+      const productsRef = collection(db, 'Productos')
+      getDocs(productsRef).then(res => {
+        setProdarr(res.docs.map(doc => ({id: doc.id, ...doc.data()})))
+        console.log(prodArr)
+        setIsLoading(false)
+      })
+      
     }, []);
     if (isLoading) { // ⬅️ si está cargando, mostramos un texto que lo indique
         return (
