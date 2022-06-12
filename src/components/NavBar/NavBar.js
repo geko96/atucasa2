@@ -10,38 +10,13 @@ import React from "react";
 import { useContext } from "react";
 import { contexto } from "../Context/context";
 import { useEffect } from "react";
+import CartWidget from "../Cart/CartWidget";
 
 
 
 
 
 export default function NavBar () {
-  let temp = 0 
-
-  
-  
-  
-  const { cart } = useContext(contexto) 
-  const [count, setCount] = React.useState(0)
-
-  
-
-
-  useEffect(() => {
-
-    for (let i = 0; i < cart.length; i++) {
-      temp = temp+cart[i].Cantidad
-      setCount(temp)
-      
-    }
-
-    
-
-    
-  },[])
-
-  
-
   
 
 
@@ -57,7 +32,7 @@ export default function NavBar () {
         navbarScroll
       >
         <Nav.Link><NavLink exact to="/">Home</NavLink></Nav.Link>
-        <Nav.Link ><NavLink exact to="/cart">Carrito: {count}</NavLink></Nav.Link>
+        <Nav.Link ><NavLink exact to="/cart"><CartWidget/></NavLink></Nav.Link>
         <Nav.Link><NavLink exact to="/ayuda">Ayuda</NavLink></Nav.Link>
         <Nav.Link><NavLink exact to="/contacto">Contacto</NavLink></Nav.Link>
         
