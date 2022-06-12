@@ -141,3 +141,9 @@ a:link, a:visited,  a:hover, a:active
 .card {
   background-color: #44474e !important;
 }
+
+#tbOrders td, #tbOrders th {
+  border: 1px solid gray;
+  text-align: center;
+  padding: 10px;
+}

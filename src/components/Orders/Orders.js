@@ -27,17 +27,18 @@ export default function Orders () {
       }
       return (
         <div className="row">
-            <table className="FULLTABLE">
-                <thead>
-                    <th><td>ID</td><td>Nombre</td><td>Fecha</td></th>
-                </thead>
-                <tbody>
-                    {prodArr.map(product => {
+            <table className="FULLTABLE" id="tbOrders">
+                <tr>
+                    <td>ID</td>
+                    <td>Nombre</td>
+                    <td>Fecha</td>
+                </tr>
+                {prodArr.map(product => {
                         return (
                             <tr key={product.id}><td>{product.id}</td><td>{product.cliente}</td><td>{product.timeStamp}</td></tr>
                         )
-                    })}
-                </tbody>
+                })}
+                
             </table>
         </div>
       );
