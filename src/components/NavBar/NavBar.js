@@ -32,6 +32,7 @@ export default function NavBar () {
         navbarScroll
       >
         <Nav.Link><NavLink exact to="/">Home</NavLink></Nav.Link>
+        <Nav.Link><NavLink exact to="/orders">Ordenes</NavLink></Nav.Link>
         <Nav.Link ><NavLink exact to="/cart"><CartWidget/></NavLink></Nav.Link>
         <Nav.Link><NavLink exact to="/ayuda">Ayuda</NavLink></Nav.Link>
         <Nav.Link><NavLink exact to="/contacto">Contacto</NavLink></Nav.Link>

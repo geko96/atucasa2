@@ -97,7 +97,8 @@ export default function Cart () {
         "direccion": document.getElementById('direction').value,
         "correo": document.getElementById('email').value,
         "total": amount,
-        "productos": cart
+        "productos": cart,
+        "timeStamp": new Date(Date.now()).toUTCString()
       }
 
       //añadir al firestore
