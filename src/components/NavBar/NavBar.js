@@ -3,14 +3,14 @@ import { Container } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Nav } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { NavDropdown } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import { FormControl } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import React, { useContext } from "react";
-import { contexto } from "../../App";
+import React from "react";
+import { useContext } from "react";
+import { contexto } from "../Context/context";
 import { useEffect } from "react";
-import { useState } from "react";
+
 
 
 
@@ -20,16 +20,17 @@ export default function NavBar () {
 
   
   
+  
+  const { cart } = useContext(contexto) 
   const [count, setCount] = React.useState(0)
-  const cartContext = useContext(contexto).cart
 
   
 
 
   useEffect(() => {
 
-    for (let i = 0; i < cartContext.length; i++) {
-      temp = temp+cartContext[i].Cantidad
+    for (let i = 0; i < cart.length; i++) {
+      temp = temp+cart[i].Cantidad
       setCount(temp)
       
     }
@@ -37,14 +38,14 @@ export default function NavBar () {
     
 
     
-  },[cartContext.lengt, count])
+  },[])
 
   
 
   
 
 
-  return (
+  return ( 
         <Navbar bg="dark" variant="dark" expand="lg">
   <Container fluid>
     <Navbar.Brand><NavLink exact to="/">A Tu Casa</NavLink></Navbar.Brand>

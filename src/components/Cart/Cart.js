@@ -1,9 +1,9 @@
 import { useContext } from "react"
-import { contexto } from "../../App"
+import { contexto } from "../Context/context"
 import ItemCount from "../Items/ItemCount"
 import { Button, Table } from "react-bootstrap"
 import './cart.css'
-import { StorageId } from "../../App"
+import { StorageId } from "../Context/context"
 import React from "react"
 import { useEffect , useState } from "react"
 import { Link } from "react-router-dom"

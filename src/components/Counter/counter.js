@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 
 import { useState} from "react";
 import { useContext } from "react";
-import { contexto } from "../../App";
-import { StorageId } from "../../App";
+import { contexto } from "../Context/context";
+import { StorageId } from "../Context/context";
 
 
 export default function Counter (elementos) {
