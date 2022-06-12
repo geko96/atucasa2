@@ -8,12 +8,23 @@
     width: fit-content;
 }
 
+.cardRow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-items: center;
+    width: fit-content;
+    color: aliceblue;
+}
+
 .rowItem {
     margin: 10px;
 }
 
 .cardImg {
     width: 100%;
+    margin-top: 5px;
 }
 
 .iconImage {

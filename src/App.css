@@ -137,3 +137,7 @@ a:link, a:visited,  a:hover, a:active
   color: white;
   min-height: 100vh;
 }
+
+.card {
+  background-color: #44474e !important;
+}

@@ -11,6 +11,7 @@ import Modal from "react-bootstrap/Modal"
 import Accordion from "react-bootstrap/Accordion"
 import Form from "react-bootstrap/Form"
 import InputGroup from 'react-bootstrap/InputGroup';
+import { collection, getFirestore, addDoc } from "firebase/firestore"
 
 
 
@@ -22,7 +23,7 @@ export default function Cart () {
   const handleShow = () => setShow(true);
 
     let contexti = useContext(contexto)
-    let cart = contexti.cart
+    let { cart } = useContext(contexto)
     console.log(cart)
     const [count, setCount] = React.useState(0)
     const cartContext = useContext(contexto).cart
@@ -88,6 +89,30 @@ export default function Cart () {
       )
     }
 
+    async function saveOrder () {
+      const db = getFirestore()
+      let order = {
+        "cliente": document.getElementById('name').value,
+        "telefono": document.getElementById('phone').value,
+        "direccion": document.getElementById('direction').value,
+        "correo": document.getElementById('email').value,
+        "total": amount,
+        "productos": cart
+      }
+
+      //añadir al firestore
+      const docRef = await addDoc(collection(db, "orders"), order);
+      console.log(order)
+      console.log("Document written with ID: ", docRef.id);
+
+      handleClose();
+      cart = []
+      localStorage.clear()
+      document.location.reload()
+
+
+    }
+
     return (
         <div className="CART">
           <table className="TablaCart">
@@ -134,38 +159,42 @@ export default function Cart () {
           <Modal.Body>
             <form>
             <InputGroup className="mb-3">
-              <InputGroup.Text id="name">👤</InputGroup.Text>
+              <InputGroup.Text >👤</InputGroup.Text>
               <Form.Control
                 placeholder="Nombre completo"
                 aria-label="Username"
                 aria-describedby="basic-addon1"
+                id="name"
               />
             </InputGroup>
 
             <InputGroup className="mb-3">
-              <InputGroup.Text id="direction">🏠</InputGroup.Text>
+              <InputGroup.Text>🏠</InputGroup.Text>
               <Form.Control
                 placeholder="Direccion de facturacion"
                 aria-label="Username"
                 aria-describedby="basic-addon1"
+                id="direction"
               />
             </InputGroup>
 
             <InputGroup className="mb-3">
-              <InputGroup.Text id="phone">📞</InputGroup.Text>
+              <InputGroup.Text>📞</InputGroup.Text>
               <Form.Control
                 placeholder="Telefono"
                 aria-label="Username"
                 aria-describedby="basic-addon1"
+                id="phone"
               />
             </InputGroup>
 
             <InputGroup className="mb-3">
-              <InputGroup.Text id="email">✉</InputGroup.Text>
+              <InputGroup.Text >✉</InputGroup.Text>
               <Form.Control
                 placeholder="email"
                 aria-label="Username"
                 aria-describedby="basic-addon1"
+                id="email"
               />
             </InputGroup>
 
@@ -184,7 +213,7 @@ export default function Cart () {
           <Button variant="secondary" onClick={handleClose}>
             Cancelar
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={() => {saveOrder()}}>
             Comprar
             </Button>
             </Modal.Footer>
