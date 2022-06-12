@@ -4,6 +4,7 @@ import ItemDetailContainer from '../ItemDetailContainer/ItemDetailContainer';
 import ItemListContainer from '../ItemListContainer/ItemListContainer';
 import Cart from '../Cart/Cart';
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import CheckOut from '../CheckOut/CheckOut';
 
 
 export default function Router() {
@@ -14,7 +15,8 @@ export default function Router() {
             <Route exact path='/' element={ <ItemListContainer/> } />
             <Route exact path='/category/:id' element={<ItemListContainer/>}/>
             <Route exact path='/item/:id' element={<ItemDetailContainer/>}/>
-            <Route exact path='/cart' element={ <Cart/> } />            
+            <Route exact path='/cart' element={ <Cart/> } />   
+            <Route exact path='/checkout' element={ <CheckOut/> } />            
         </Routes>
       </BrowserRouter>
     );

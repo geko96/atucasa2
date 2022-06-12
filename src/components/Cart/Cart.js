@@ -7,11 +7,19 @@ import { StorageId } from "../Context/context"
 import React from "react"
 import { useEffect , useState } from "react"
 import { Link } from "react-router-dom"
+import Modal from "react-bootstrap/Modal"
+import Accordion from "react-bootstrap/Accordion"
+import Form from "react-bootstrap/Form"
+import InputGroup from 'react-bootstrap/InputGroup';
 
 
 
 export default function Cart () {
   let temp = 0 
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
     let contexti = useContext(contexto)
     let cart = contexti.cart
@@ -115,7 +123,72 @@ export default function Cart () {
             
             
           </table>
-          <Button className="left">Comprar</Button>
+          <Button variant="primary" onClick={handleShow}>
+            Comprar
+          </Button>
+
+          <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+          <Modal.Title>Confirmar Compra</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <form>
+            <InputGroup className="mb-3">
+              <InputGroup.Text id="name">👤</InputGroup.Text>
+              <Form.Control
+                placeholder="Nombre completo"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+              />
+            </InputGroup>
+
+            <InputGroup className="mb-3">
+              <InputGroup.Text id="direction">🏠</InputGroup.Text>
+              <Form.Control
+                placeholder="Direccion de facturacion"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+              />
+            </InputGroup>
+
+            <InputGroup className="mb-3">
+              <InputGroup.Text id="phone">📞</InputGroup.Text>
+              <Form.Control
+                placeholder="Telefono"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+              />
+            </InputGroup>
+
+            <InputGroup className="mb-3">
+              <InputGroup.Text id="email">✉</InputGroup.Text>
+              <Form.Control
+                placeholder="email"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+              />
+            </InputGroup>
+
+              <p>Metodo de pago: 
+              <Form.Select aria-label="Default select example">
+                <option value="1">Mercadopago</option>
+                <option value="2">Transferencia</option>
+                <option value="3">Efectivo</option>
+              </Form.Select>
+              </p>
+              
+            </form>
+
+          </Modal.Body>
+          <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancelar
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Comprar
+            </Button>
+            </Modal.Footer>
+          </Modal>
 
 
           
