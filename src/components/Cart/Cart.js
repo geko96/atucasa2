@@ -109,7 +109,7 @@ export default function Cart () {
                   <td>{product.Cantidad}</td>
                   <td>{product.precio}</td>
                   <td>{product.precio*product.Cantidad}</td>
-                  <td><button type="button" id={product.nombre} onClick={() => deleteById({product})}>✖</button></td>
+                  <td><Button type="button" variant="warning" id={product.nombre} onClick={() => deleteById({product})}>✖</Button></td>
 
                 </tr>
 
