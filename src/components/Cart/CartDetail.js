@@ -12,11 +12,17 @@ export default function CartDetail() {
     const [amount, setAmount] = React.useState(0);
 
     useEffect(() => {
+        let temp = 0
         for (let i = 0; i < cart.length; i++) {
-            setCount(count + cart[i].Cantidad);
-            
+            temp += cart[i].Cantidad
+          setCount(temp)
+          
         }
-    }, [cart.length]);
+    
+        
+    
+        
+      },[cart])
 
     useEffect(() => {
         //Precio Total Carrito
