@@ -9,9 +9,10 @@ import { contexto } from "../Context/context";
 import { StorageId } from "../Context/context";
 
 
+
 export default function Counter (elementos) {
     
-    const miContexto = useContext(contexto)
+    const {cart , setCart} = useContext(contexto)
 
     let data = elementos.elementos
 
@@ -66,35 +67,37 @@ export default function Counter (elementos) {
             "FullData":data.FullData
         }
         
-        function check () {
-            for (let i = 0; i < miContexto.cart.length; i++) {
-            
-                if (miContexto.cart[i].nombre === ItemForCart.nombre) {
-                    console.log('Existencia encontrada en el index '+ i)
-                    miContexto.cart[i].Cantidad = miContexto.cart[i].Cantidad + ItemForCart.Cantidad
+        
+        function CheckIfExist(){
+
+            for (let i = 0; i < cart.length; i++) {
+                if(cart[i].nombre === ItemForCart.nombre){
+                    
                     return true
                 }
-                
             }
+        
         }
 
-        if (check()) {
-            console.log('Producto con existencia agregado')
-        }else {
-            miContexto.cart.push(ItemForCart)
+        if(CheckIfExist()){
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Ya existe en el carrito',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }else{
+            setCart([...cart, ItemForCart])
         }
-        
 
         
 
 
 
-        if (miContexto.cart[0] == null) {
-            miContexto.cart.splice(0,1)
-        }
         
-        console.log('Array de items'+ JSON.stringify(miContexto.cart))
-        localStorage.setItem(StorageId,JSON.stringify(miContexto))
+        console.log('Array de items'+ JSON.stringify(cart))
+        
         
         
 

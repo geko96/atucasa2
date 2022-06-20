@@ -7,7 +7,7 @@ import { useEffect } from "react";
 
 export default function CartWidget () {
 
-  const { cart } = useContext(contexto) 
+  const { cart, setCart } = useContext(contexto) 
   const [count, setCount] = React.useState(0)
 
   
@@ -26,18 +26,18 @@ export default function CartWidget () {
     
   },[cart])
 
-  if(count === 0){
-    return(
-        <>
-        Carrito
-        </>
-    )
-  }
-
+  if(count > 0){
     return(
         <>
         Carrito: {count}
         </>
     )
+  }
+
+  return(
+        <>
+        Carrito
+        </>
+  )
 
 }

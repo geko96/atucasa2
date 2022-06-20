@@ -12,6 +12,7 @@ import Accordion from "react-bootstrap/Accordion"
 import Form from "react-bootstrap/Form"
 import InputGroup from 'react-bootstrap/InputGroup';
 import { collection, getFirestore, addDoc } from "firebase/firestore"
+import CartDetail from "./CartDetail"
 
 
 
@@ -23,8 +24,7 @@ export default function Cart () {
   const handleShow = () => setShow(true);
 
     let contexti = useContext(contexto)
-    let { cart } = useContext(contexto)
-    console.log(cart)
+    let { cart, setCart } = useContext(contexto)
     const [count, setCount] = React.useState(0)
     const cartContext = useContext(contexto).cart
     const [amount, setAmount] = React.useState(0)
@@ -41,7 +41,7 @@ export default function Cart () {
       
   
       
-    },[cartContext.lengt, count])
+    },[cart.lengt, count])
 
     useEffect(() => {
       //Precio Total Carrito
@@ -58,23 +58,23 @@ export default function Cart () {
       
     },[])
 
-    function SaveData () {
-      
-      localStorage.setItem(StorageId,JSON.stringify(contexti))
-      document.location.reload()
-    }
+    
 
     function deleteById (elemento) {
       
       let id = cart.findIndex(item => item == elemento.product)
       console.log(id)
       console.log('Valor buscado '+ JSON.stringify(elemento.product) + ' con el resultado '+ id)
-      cart.splice(id,1)
-      SaveData();
+      setCart(cart.filter(item => item !== elemento.product))
+      
       console.log(cart)
+      if(cart.length === 0){
+        document.location.reload()
+      }
       return
     }
-
+    
+    
     if (count === 0 ) {
       return (
         <div className="emptyCart">
@@ -87,34 +87,8 @@ export default function Cart () {
           
         </div>
       )
-    }
-
-    async function saveOrder () {
-      const db = getFirestore()
-      let order = {
-        "cliente": document.getElementById('name').value,
-        "telefono": document.getElementById('phone').value,
-        "direccion": document.getElementById('direction').value,
-        "correo": document.getElementById('email').value,
-        "total": amount,
-        "productos": cart,
-        "timeStamp": new Date(Date.now()).toUTCString()
-      }
-
-      //añadir al firestore
-      const docRef = await addDoc(collection(db, "orders"), order);
-      console.log(order)
-      console.log("Document written with ID: ", docRef.id);
-
-      handleClose();
-      cart = []
-      localStorage.clear()
-      document.location.reload()
-
-
-    }
-
-    return (
+    }else {
+      return (
         <div className="CART">
           <table className="TablaCart">
           <thead>
@@ -143,12 +117,8 @@ export default function Cart () {
           </tbody>
           </table>
 
-          <table className="TablaCart">
-            <tr><td>Items</td><td>{count}</td></tr>
-            <tr><td>Total</td><td>${amount}</td></tr>
-            
-            
-          </table>
+          <CartDetail/>
+
           <Button variant="primary" onClick={handleShow}>
             Comprar
           </Button>
@@ -224,6 +194,34 @@ export default function Cart () {
           
         </div>
       )
+    }
+
+    async function saveOrder () {
+      const db = getFirestore()
+      let order = {
+        "cliente": document.getElementById('name').value,
+        "telefono": document.getElementById('phone').value,
+        "direccion": document.getElementById('direction').value,
+        "correo": document.getElementById('email').value,
+        "total": amount,
+        "productos": cart,
+        "timeStamp": new Date(Date.now()).toUTCString()
+      }
+
+      //añadir al firestore
+      const docRef = await addDoc(collection(db, "orders"), order);
+      console.log(order)
+      console.log("Document written with ID: ", docRef.id);
+
+      handleClose();
+      setCart([])
+      document.location.reload()
+      
+
+
+    }
+
+    
 
       
 }
