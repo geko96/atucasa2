@@ -215,7 +215,7 @@ export default function Cart () {
 
       handleClose();
       setCart([])
-      
+      document.location.reload()
 
 
     }
