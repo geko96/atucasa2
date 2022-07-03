@@ -231,11 +231,11 @@ export default function TheCart () {
               <Button variant="secondary" onClick={handleClose}>
                 Cancelar
               </Button>
+              <Link to="/myorders" className="botonera">
               <Button variant="primary" onClick={() => saveOrder()}>
-                <Link to="/myorders" className="botonera">
-                <Button variant="primary">Comprar</Button>
-                </Link>
+                Confirmar
                 </Button>
+                </Link>
                 </Modal.Footer>
               </Modal>
     
