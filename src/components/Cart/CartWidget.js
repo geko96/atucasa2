@@ -14,17 +14,17 @@ export default function CartWidget () {
 
 
   useEffect(() => {
-    let temp = 0
-    for (let i = 0; i < cart.length; i++) {
-        temp += cart[i].Cantidad
-      setCount(temp)
-      
-    }
+    setCount(() => {
+      let temp = 0
+      cart.map((product) => {
+        temp += product.Cantidad
+      }
+      )
+      return temp
+    })
+  }
+    , [cart]);
 
-    
-
-    
-  },[cart])
 
   if(count > 0){
     return(

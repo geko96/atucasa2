@@ -4,6 +4,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { initializeApp } from "firebase/app";
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -19,7 +20,7 @@ root.render(
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDIxBw0n6W36ruYySCT3SGOwhVn0ZwE9hQ",
+  apiKey: 'AIzaSyDIxBw0n6W36ruYySCT3SGOwhVn0ZwE9hQ',
   authDomain: "coder-react-98194.firebaseapp.com",
   projectId: "coder-react-98194",
   storageBucket: "coder-react-98194.appspot.com",

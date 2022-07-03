@@ -7,9 +7,6 @@ import { Form } from "react-bootstrap";
 import { FormControl } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import React from "react";
-import { useContext } from "react";
-import { contexto } from "../Context/context";
-import { useEffect } from "react";
 import CartWidget from "../Cart/CartWidget";
 
 

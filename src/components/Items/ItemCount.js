@@ -10,9 +10,6 @@ import { contexto } from "../../App"
 
 export default function ItemCount({productos}) {
     
-    
-
-    try {
     return (
     
         <Card key={productos.name} className="margin10" style={{ width: '250px'}}>
@@ -32,6 +29,6 @@ export default function ItemCount({productos}) {
             </Card.Body>
         </Card>
     )
-    }catch{}
+    
 }
 

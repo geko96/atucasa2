@@ -5,6 +5,7 @@ import ItemListContainer from '../ItemListContainer/ItemListContainer';
 import Cart from '../Cart/Cart';
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import Orders from '../Orders/Orders';
+import MyOrders from '../Orders/MyOrders';
 
 
 export default function Router() {
@@ -17,6 +18,7 @@ export default function Router() {
             <Route exact path='/item/:id' element={<ItemDetailContainer/>}/>
             <Route exact path='/cart' element={ <Cart/> } />
             <Route exact path='/orders' element={ <Orders/> } />   
+            <Route exact path='/myorders' element={ <MyOrders/> } />   
         </Routes>
       </BrowserRouter>
     );

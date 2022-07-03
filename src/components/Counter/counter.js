@@ -10,13 +10,13 @@ import { StorageId } from "../Context/context";
 
 
 
-export default function Counter (elementos) {
+export default function Counter (array) {
     
     const {cart , setCart} = useContext(contexto)
 
-    let data = elementos.elementos
+    let data = array.elementos
 
-    let add = () => {
+    let addItem = () => {
         if (count >= data.stock) {
             Swal.fire({
                 position: 'center',
@@ -30,7 +30,7 @@ export default function Counter (elementos) {
         }
     }
 
-    let del = () => {
+    let deleteItem = () => {
         if (count <= 0) {
             return setCount(0)
         }else{
@@ -113,9 +113,9 @@ export default function Counter (elementos) {
         return (
             <>
             <div className="botonera">
-            <Button variant="primary" id="-" onClick={del}>-</Button>
+            <Button variant="primary" id="-" onClick={deleteItem}>-</Button>
             <div className="text-center">{count}</div>
-            <Button variant="primary" id="+" onClick={add}>+</Button>
+            <Button variant="primary" id="+" onClick={addItem}>+</Button>
         
             </div>
             <Button variant="primary" onClick={CartAdd}>Agregar al Carrito</Button>

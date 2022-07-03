@@ -8,35 +8,15 @@ import Counter from "../Counter/counter"
 export default function ItemDetail({producto}) {
     const [count, setCount] = React.useState(producto.initial)
     
-    let add = () => {
-        if (count >= producto.stock) {
-            Swal.fire({
-                position: 'center',
-                icon: 'error',
-                title: 'Sin stock Disponible',
-                showConfirmButton: false,
-                timer: 1500
-              })
-        }else {
-            return setCount(count + 1)
-        }
-    }
 
-    let del = () => {
-        if (count <= 0) {
-            setCount(0)
-        }else{
-            setCount(count - 1)
-        }
-    }
 
     return (
         <>
             <div className="contenedor">
                 <div className="Fotos">
                     <div id="DefaultPic"><img className="DefaultPicDisplayed" src={producto.img[0]}></img></div>
-                    <div id="carruselImg">{producto.img.map(img => (
-                        <img src={img} className="litleImg"/>
+                    <div id="carruselImg">{producto.img.map((img,i)  => (
+                        <img src={img} key={i+'_image'} className="litleImg"/>
                     ))}
                 </div>
                 </div>

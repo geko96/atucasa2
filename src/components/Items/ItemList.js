@@ -2,7 +2,7 @@ import ItemCount from "./ItemCount";
 import React from "react";
 import { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
-import { getFirestore, getDoc, doc, getDocs, collection } from 'firebase/firestore'
+import { getFirestore, getDocs, collection } from 'firebase/firestore'
 
 
 export default function ItemList () {
@@ -29,7 +29,7 @@ export default function ItemList () {
       return (
         <div className="row">
           {prodArr.map(product => (
-                <ItemCount key={product.name} productos={product}/>
+                <ItemCount key={product.id} productos={product}/>
             ))}
         </div>
       );
