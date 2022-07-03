@@ -27,7 +27,7 @@ export default function TheCart () {
       const cartContext = useContext(contexto).cart
       const [amount, setAmount] = React.useState(0)
 
-    async function saveOrder () {
+    async function saveOrder (e) {
         const db = getFirestore()
         let order = {
           "cliente": document.getElementById('name').value,
@@ -48,6 +48,8 @@ export default function TheCart () {
             timer: 1500
 
         })
+
+        order.correo === order.correo2 ? SaveThis() : e.preventDefault()
   
         //añadir al firestore
         async function SaveThis () {
@@ -232,7 +234,7 @@ export default function TheCart () {
                 Cancelar
               </Button>
               <Link to="/myorders" className="botonera">
-              <Button variant="primary" onClick={() => saveOrder()}>
+              <Button variant="primary" onClick={(e) => saveOrder(e)}>
                 Confirmar
                 </Button>
                 </Link>
